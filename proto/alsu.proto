@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+package alsu;
+
+service AlsuService {
+    rpc pingServer(google.protobuf.StringValue) returns (google.protobuf.StringValue);    
+}

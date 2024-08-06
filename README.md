@@ -1,30 +1,17 @@
 # alsu
 
-**Анализ конфигурации**
+## build server
+
 ```
-alsu analyse .
-```
-Создается каталоги:
-```
-./alsu/conf - дерево модулей и разбор каждого модуля
-./alsu/stat - статистика конфигурации (сколько функций, процедур, модулей и др. стат. данные)
-./alsu/list - список всех объектов конфигурации с описанием и параметрами
+protoc -I proto/ proto/alsu.proto --go_out=plugins=grpc:src/proto
+cd src && go build -v -o ../build/server && cd ..
+
 ```
 
-**Автогенерация тестов**
-```
-alsu test generated -smoke -tdd -bdd -unit
-```
-Создается каталоги:
-```
-./alsu/test - настройки для запуска тестов
-```
+## build test client
 
-**Запуск тестов**
 ```
-alsu test run
-```
-Создается каталоги:
-```
-./alsu/report - каталог с отчетами тестирования
+protoc -I proto/ proto/alsu.proto --go_out=plugins=grpc:client/proto
+cd client && go build -v -o ../build/client && cd ..
+
 ```
